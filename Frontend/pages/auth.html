@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeroday - Secure Authentication</title>
+    <!-- Design System Stylesheets -->
+    <link rel="stylesheet" href="/assets/css/design-system.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/templates.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/auth.css">
+    
+    <!-- External Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="background">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-shield-halved" style="color: #00d4ff; font-size: 1.8rem;"></i>
+                <span>Zeroday</span>
+            </div>
+            <div class="nav-center">
+                <h1 class="auth-title nav-no-glow">
+                    <span class="gradient-text">Secure Access</span>
+                </h1>
+            </div>
+            <div class="nav-back">
+                <a href="../index.html" class="btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Authentication Container -->
+    <main class="auth-main">
+        <div class="auth-container">
+            <!-- Auth Header -->
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <i class="fas fa-shield-halved shield-enhanced"></i>
+                </div>
+            </div>
+
+            <!-- Auth Toggle -->
+            <div class="auth-toggle">
+                <button class="toggle-btn active" data-form="signin">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Sign In
+                </button>
+                <button class="toggle-btn" data-form="signup">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </button>
+            </div>
+
+            <!-- Sign In Form -->
+            <div class="auth-form-container" id="signin-form">
+                <div class="auth-form glass-card">
+                    <div class="form-header">
+                        <h2>Welcome Back</h2>
+                        <p>Choose your authentication method</p>
+                    </div>
+
+                    <!-- Authentication Methods Toggle -->
+                    <div class="auth-methods-toggle">
+                        <button class="method-btn active" data-method="password">
+                            <i class="fas fa-key"></i>
+                            Password
+                        </button>
+                        <button class="method-btn" data-method="face">
+                            <i class="fas fa-face-smile"></i>
+                            Face ID
+                        </button>
+                    </div>
+
+                    <!-- Password Login -->
+                    <div class="auth-method" id="password-method">
+                        <form class="auth-form-content">
+                            <div class="form-group">
+                                <label for="signin-email">
+                                    <i class="fas fa-envelope"></i>
+                                    Email Address
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="signin-email" 
+                                    class="form-input" 
+                                    placeholder="Enter your email"
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="signin-password">
+                                    <i class="fas fa-lock"></i>
+                                    Password
+                                </label>
+                                <div class="password-input-container">
+                                    <input 
+                                        type="password" 
+                                        id="signin-password" 
+                                        class="form-input" 
+                                        placeholder="Enter your password"
+                                        required
+                                    >
+                                    <button type="button" class="password-toggle">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="form-options">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="remember-me">
+                                    <span class="checkmark"></span>
+                                    Remember me
+                                </label>
+                                <a href="#" class="forgot-password">Forgot password?</a>
+                            </div>
+
+                            <button type="submit" class="btn-primary full-width">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Sign In Securely
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Face Recognition Login -->
+                    <div class="auth-method hidden" id="face-method">
+                        <div class="face-auth-container">
+                            <div class="face-scanner">
+                                <div class="scanner-frame">
+                                    <div class="scanner-overlay">
+                                        <div class="scanner-corners">
+                                            <div class="corner top-left"></div>
+                                            <div class="corner top-right"></div>
+                                            <div class="corner bottom-left"></div>
+                                            <div class="corner bottom-right"></div>
+                                        </div>
+                                        <div class="scanner-line"></div>
+                                    </div>
+                                    <div class="camera-preview">
+                                        <i class="fas fa-camera camera-icon"></i>
+                                        <p>Position your face in the frame</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="scan-status">
+                                    <div class="status-indicator">
+                                        <i class="fas fa-circle-notch fa-spin"></i>
+                                        <span>Initializing camera...</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="face-auth-actions">
+                                <button class="btn-primary" id="start-face-scan">
+                                    <i class="fas fa-play"></i>
+                                    Start Face Scan
+                                </button>
+                                <button class="btn-secondary" id="use-password-instead">
+                                    <i class="fas fa-key"></i>
+                                    Use Password Instead
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div class="auth-form-container hidden" id="signup-form">
+                <div class="auth-form glass-card">
+                    <div class="form-header">
+                        <h2>Create Account</h2>
+                        <p>Join Zeroday's secure banking platform</p>
+                    </div>
+
+                    <!-- Signup Steps Indicator -->
+                    <div class="signup-steps">
+                        <div class="step active" data-step="1">
+                            <div class="step-number">1</div>
+                            <span>Account Details</span>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-number">2</div>
+                            <span>Face Setup</span>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-number">3</div>
+                            <span>Verification</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Account Details -->
+                    <div class="signup-step active" id="step-1">
+                        <form class="auth-form-content">
+                            <div class="form-group">
+                                <label for="signup-fullname">
+                                    <i class="fas fa-user"></i>
+                                    Full Name
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="signup-fullname" 
+                                    class="form-input" 
+                                    placeholder="Enter your full name"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signup-email">
+                                    <i class="fas fa-envelope"></i>
+                                    Email Address
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="signup-email" 
+                                    class="form-input" 
+                                    placeholder="Enter your email"
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="signup-password">
+                                    <i class="fas fa-lock"></i>
+                                    Password
+                                </label>
+                                <div class="password-input-container">
+                                    <input 
+                                        type="password" 
+                                        id="signup-password" 
+                                        class="form-input" 
+                                        placeholder="Create a strong password"
+                                        required
+                                    >
+                                    <button type="button" class="password-toggle">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="password-strength">
+                                    <div class="strength-bar">
+                                        <div class="strength-fill"></div>
+                                    </div>
+                                    <span class="strength-text">Password strength</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirm-password">
+                                    <i class="fas fa-lock"></i>
+                                    Confirm Password
+                                </label>
+                                <div class="password-input-container">
+                                    <input 
+                                        type="password" 
+                                        id="confirm-password" 
+                                        class="form-input" 
+                                        placeholder="Confirm your password"
+                                        required
+                                    >
+                                    <button type="button" class="password-toggle">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="terms-agreement" required>
+                                    <span class="checkmark"></span>
+                                    I agree to the <a href="#" class="link">Terms of Service</a> and <a href="#" class="link">Privacy Policy</a>
+                                </label>
+                            </div>
+
+                            <button type="button" class="btn-primary full-width" id="next-to-face-setup">
+                                <i class="fas fa-arrow-right"></i>
+                                Continue to Face Setup
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Step 2: Face Recognition Setup -->
+                    <div class="signup-step" id="step-2">
+                        <div class="face-setup-container">
+                            <div class="face-setup-header">
+                                <h3>Face Recognition Setup</h3>
+                                <p>We'll capture 3 photos of your face from different angles for secure authentication</p>
+                            </div>
+
+                            <div class="face-capture-progress">
+                                <div class="capture-item" data-angle="front">
+                                    <div class="capture-preview">
+                                        <i class="fas fa-user-circle"></i>
+                                    </div>
+                                    <span>Front View</span>
+                                    <div class="capture-status">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                </div>
+                                <div class="capture-item" data-angle="left">
+                                    <div class="capture-preview">
+                                        <i class="fas fa-user-circle"></i>
+                                    </div>
+                                    <span>Left Profile</span>
+                                    <div class="capture-status">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                </div>
+                                <div class="capture-item" data-angle="right">
+                                    <div class="capture-preview">
+                                        <i class="fas fa-user-circle"></i>
+                                    </div>
+                                    <span>Right Profile</span>
+                                    <div class="capture-status">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="face-capture-area">
+                                <div class="capture-frame">
+                                    <div class="capture-overlay">
+                                        <div class="capture-guide">
+                                            <div class="guide-circle">
+                                                <div class="face-outline"></div>
+                                            </div>
+                                        </div>
+                                        <div class="capture-instructions">
+                                            <h4 id="capture-instruction">Position your face in the circle</h4>
+                                            <p id="capture-hint">Look straight at the camera</p>
+                                        </div>
+                                    </div>
+                                    <div class="camera-preview">
+                                        <i class="fas fa-camera camera-icon"></i>
+                                        <p>Camera will initialize shortly...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="face-capture-actions">
+                                <button class="btn-secondary" id="start-capture">
+                                    <i class="fas fa-camera"></i>
+                                    Start Camera
+                                </button>
+                                <button class="btn-primary hidden" id="capture-photo">
+                                    <i class="fas fa-camera-retro"></i>
+                                    Capture Photo
+                                </button>
+                                <button class="btn-secondary" id="skip-face-setup">
+                                    <i class="fas fa-skip-forward"></i>
+                                    Skip for Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Verification -->
+                    <div class="signup-step" id="step-3">
+                        <div class="verification-container">
+                            <div class="verification-header">
+                                <div class="success-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <h3>Account Created Successfully!</h3>
+                                <p>Your Zeroday account has been set up with advanced security features</p>
+                            </div>
+
+                            <div class="security-summary">
+                                <h4>Your Security Features</h4>
+                                <div class="security-feature">
+                                    <div class="feature-icon success">
+                                        <i class="fas fa-envelope-circle-check"></i>
+                                    </div>
+                                    <div class="feature-details">
+                                        <span class="feature-name">Email Authentication</span>
+                                        <span class="feature-status">Verified</span>
+                                    </div>
+                                </div>
+                                <div class="security-feature">
+                                    <div class="feature-icon success">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                    <div class="feature-details">
+                                        <span class="feature-name">Password Protection</span>
+                                        <span class="feature-status">Configured</span>
+                                    </div>
+                                </div>
+                                <div class="security-feature" id="face-auth-status">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-face-smile"></i>
+                                    </div>
+                                    <div class="feature-details">
+                                        <span class="feature-name">Face Recognition</span>
+                                        <span class="feature-status">Ready</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="verification-actions">
+                                <button class="btn-primary full-width" id="complete-signup">
+                                    <i class="fas fa-rocket"></i>
+                                    Access My Dashboard
+                                </button>
+                                <button class="btn-secondary full-width" id="setup-additional-security">
+                                    <i class="fas fa-cog"></i>
+                                    Configure Additional Security
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Features Showcase -->
+            <div class="security-showcase">
+                <div class="security-grid">
+                    <div class="security-item">
+                        <div class="security-icon">
+                            <i class="fas fa-face-smile"></i>
+                        </div>
+                        <h4>3D Face Recognition</h4>
+                        <p>Advanced biometric authentication with liveness detection</p>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>AI Behavior Analysis</h4>
+                        <p>Intelligent pattern recognition for enhanced security</p>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-icon">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                        <h4>Fraud Prevention</h4>
+                        <p>Real-time monitoring and threat detection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="auth-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Zeroday. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/auth.js"></script>
+</body>
+</html>
