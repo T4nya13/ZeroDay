@@ -1,0 +1,491 @@
+/* ===================================
+   ZERODAY PAGE TEMPLATES
+   Consistent layouts for all pages
+   ================================== */
+
+/* === PAGE LAYOUT TEMPLATES === */
+
+/* Base Page Layout */
+.page-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--gradient-background);
+}
+
+.page-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: var(--z-fixed);
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: var(--transition-normal);
+}
+
+.page-header.scrolled {
+  background: var(--nav-bg-scrolled);
+  box-shadow: var(--shadow-lg);
+}
+
+.page-main {
+  flex: 1;
+  padding-top: var(--nav-height);
+}
+
+.page-footer {
+  margin-top: auto;
+}
+
+/* === CONTENT TEMPLATES === */
+
+/* Full Width Hero Template */
+.template-hero-full {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.template-hero-full::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-background);
+  z-index: -2;
+}
+
+/* Split Content Template */
+.template-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+  min-height: 80vh;
+}
+
+.template-split.reverse {
+  direction: rtl;
+}
+
+.template-split.reverse > * {
+  direction: ltr;
+}
+
+/* Centered Content Template */
+.template-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-4xl) 0;
+}
+
+/* Grid Content Template */
+.template-grid {
+  display: grid;
+  gap: var(--space-2xl);
+  padding: var(--space-4xl) 0;
+}
+
+.template-grid.cols-2 {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.template-grid.cols-3 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.template-grid.cols-4 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* === SECTION TEMPLATES === */
+
+/* Standard Section Template */
+.section-template {
+  padding: var(--space-5xl) 0;
+  position: relative;
+}
+
+.section-template.alternate {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.section-template.dark {
+  background: var(--glass-dark);
+}
+
+.section-template.glass {
+  background: var(--glass-white);
+  backdrop-filter: blur(20px);
+}
+
+/* === COMPONENT TEMPLATES === */
+
+/* Card Grid Template */
+.card-grid-template {
+  display: grid;
+  gap: var(--space-2xl);
+  padding: var(--space-3xl) 0;
+}
+
+.card-grid-template.cols-1 {
+  grid-template-columns: 1fr;
+}
+
+.card-grid-template.cols-2 {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.card-grid-template.cols-3 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.card-grid-template.cols-4 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Feature List Template */
+.feature-list-template {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+  padding: var(--space-4xl) 0;
+}
+
+.feature-list-template .content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.feature-list-template .visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Timeline Template */
+.timeline-template {
+  position: relative;
+  padding: var(--space-4xl) 0;
+}
+
+.timeline-template::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--gradient-primary);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+  align-items: center;
+}
+
+.timeline-content {
+  background: var(--glass-white);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+}
+
+.timeline-marker {
+  width: 20px;
+  height: 20px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.timeline-item:nth-child(even) .timeline-content:first-child {
+  text-align: right;
+}
+
+.timeline-item:nth-child(odd) .timeline-content:last-child {
+  text-align: left;
+}
+
+/* === NAVIGATION TEMPLATES === */
+
+/* Standard Navigation Template */
+.nav-template {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--nav-padding);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-template .brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.nav-template .menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xl);
+}
+
+.nav-template .actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* === FORM TEMPLATES === */
+
+/* Contact Form Template */
+.form-template {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--glass-white);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-2xl);
+}
+
+.form-template .header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.form-template .fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.form-template .actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  margin-top: var(--space-xl);
+}
+
+/* Two Column Form Template */
+.form-template-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.form-template-two-col .info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.form-template-two-col .form {
+  background: var(--glass-white);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-2xl);
+}
+
+/* === CTA TEMPLATES === */
+
+/* Call to Action Template */
+.cta-template {
+  background: var(--gradient-primary);
+  color: var(--white);
+  text-align: center;
+  padding: var(--space-4xl) var(--space-xl);
+  border-radius: var(--radius-2xl);
+  margin: var(--space-4xl) 0;
+}
+
+.cta-template .title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-md);
+}
+
+.cta-template .description {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-2xl);
+  opacity: 0.9;
+}
+
+.cta-template .actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* === RESPONSIVE TEMPLATES === */
+
+@media (max-width: 768px) {
+  .template-split,
+  .feature-list-template,
+  .form-template-two-col {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+  
+  .template-grid.cols-2,
+  .template-grid.cols-3,
+  .template-grid.cols-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-grid-template.cols-2,
+  .card-grid-template.cols-3,
+  .card-grid-template.cols-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline-template::before {
+    left: var(--space-xl);
+  }
+  
+  .timeline-item {
+    grid-template-columns: auto 1fr;
+    gap: var(--space-lg);
+    margin-left: var(--space-xl);
+  }
+  
+  .timeline-item .timeline-content:first-child {
+    display: none;
+  }
+  
+  .timeline-item .timeline-content:last-child {
+    text-align: left;
+  }
+  
+  .nav-template {
+    padding: var(--space-md);
+  }
+  
+  .nav-template .menu {
+    display: none;
+  }
+  
+  .cta-template .actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* === UTILITY TEMPLATES === */
+
+/* Page Wrapper */
+.page-wrapper {
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+/* Section Wrapper */
+.section-wrapper {
+  position: relative;
+  padding: var(--space-5xl) 0;
+}
+
+/* Background Elements Template */
+.bg-elements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.bg-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--gradient-glass);
+  backdrop-filter: blur(20px);
+  animation: var(--transition-slow) ease-in-out infinite;
+}
+
+/* === ANIMATION TEMPLATES === */
+
+/* Fade In Animation Template */
+.animate-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide In Animation Template */
+.animate-slide-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-slide-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-slide-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-slide-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale Animation Template */
+.animate-scale {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
